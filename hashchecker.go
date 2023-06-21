@@ -60,8 +60,8 @@ func queryHashRegistry(hash string) (string, error) {
 }
 
 func main() {
-    dir := "/Users/pswapneel/Downloads/malware" // replace with actual directory
-    hashesFile := "/Users/pswapneel/Downloads/malware/hashes.txt" // replace with actual file
+    dir := "/Users/pswapneel/Downloads/malware"
+    hashesFile := "/Users/pswapneel/Downloads/malware/hashes.txt"
 
     err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
         if err != nil {
