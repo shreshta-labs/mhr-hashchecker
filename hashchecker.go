@@ -4,7 +4,6 @@ import (
     "crypto/sha1"
     "fmt"
     "io"
-//    "io/ioutil"
     "net"
     "os"
     "path/filepath"
