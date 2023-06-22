@@ -25,14 +25,14 @@ func getFileHash(filePath string) (string, error) {
     return fmt.Sprintf("%x", hash.Sum(nil)), nil
 }
 
-func writeToFile(data, filePath string) error {
+func writeToFile(path, data, filePath string) error {
     file, err := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
     if err != nil {
         return err
     }
     defer file.Close()
 
-    if _, err := file.WriteString(data + "\n"); err != nil {
+    if _, err := file.WriteString(path + ":" + data + "\n"); err != nil {
         return err
     }
 
@@ -59,7 +59,7 @@ func queryHashRegistry(hash string) (string, error) {
 }
 
 func main() {
-    dir := "/Users/pswapneel/Downloads/malware"
+    dir := "/Users/pswapneel/Downloads/malware" 
     hashesFile := "/Users/pswapneel/Downloads/malware/hashes.txt"
 
     err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
@@ -73,7 +73,7 @@ func main() {
                 return err
             }
 
-            err = writeToFile(hash, hashesFile)
+            err = writeToFile(path, hash, hashesFile)
             if err != nil {
                 return err
             }
