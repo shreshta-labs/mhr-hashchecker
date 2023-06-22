@@ -25,7 +25,11 @@ func getFileHash(filePath string) (string, error) {
     return fmt.Sprintf("%x", hash.Sum(nil)), nil
 }
 
-func writeToFile(path, data, filePath string) error {
+func writeToFile(path, data, filePath string, isBad bool) error {
+    if isBad {
+        filePath = "/Users/pswapneel/Downloads/malware/badhashes.txt"
+    }
+
     file, err := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
     if err != nil {
         return err
@@ -59,8 +63,8 @@ func queryHashRegistry(hash string) (string, error) {
 }
 
 func main() {
-    dir := "/Users/pswapneel/Downloads/malware" 
-    hashesFile := "/Users/pswapneel/Downloads/malware/hashes.txt"
+    dir := "/Users/pswapneel/Downloads/malware"
+    hashesFile := "/Users/pswapneel/Downloads/malware/hashes.txt" // file for all hashes
 
     err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
         if err != nil {
@@ -73,7 +77,7 @@ func main() {
                 return err
             }
 
-            err = writeToFile(path, hash, hashesFile)
+            err = writeToFile(path, hash, hashesFile, false)
             if err != nil {
                 return err
             }
@@ -84,7 +88,10 @@ func main() {
             }
 
             if badHash != "" {
-                fmt.Println("Bad hash detected:", badHash)
+                err = writeToFile(path, badHash, "", true)
+                if err != nil {
+                    return err
+                }
             }
         }
 
