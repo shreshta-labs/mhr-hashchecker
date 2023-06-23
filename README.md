@@ -16,5 +16,10 @@ Before executing, modify the following in hashchecker
 3. /path/to/store/hashes.txt - The absolute path of text file where the hash and absolute path of the files will be stored
 
 
+git clone https://path/repo
+
+cd team-cymru-mhr
+go run hashchecker.go
+
 
 For any bugs, suggestions, please send an email to swapneel.patnekar@shreshtait.com
