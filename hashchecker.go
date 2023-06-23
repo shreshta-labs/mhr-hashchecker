@@ -27,7 +27,7 @@ func getFileHash(filePath string) (string, error) {
 
 func writeToFile(path, data, filePath string, isBad bool) error {
     if isBad {
-        filePath = "/Users/pswapneel/Downloads/malware/badhashes.txt"
+        filePath = "/path/to/badhashes.txt"
     }
 
     file, err := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
@@ -63,8 +63,8 @@ func queryHashRegistry(hash string) (string, error) {
 }
 
 func main() {
-    dir := "/Users/pswapneel/Downloads/malware"
-    hashesFile := "/Users/pswapneel/Downloads/malware/hashes.txt" // file for all hashes
+    dir := "/path/of/directory" //Change to the directory to scan recursively
+    hashesFile := "/path/to/store/hashes.txt"
 
     err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
         if err != nil {
