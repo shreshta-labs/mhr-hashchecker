@@ -17,7 +17,9 @@ Before executing, modify the following in hashchecker
 
 
 git clone https://github.com/shreshta-labs/mhr-hashchecker.git
+
 cd team-cymru-mhr
+
 go run hashchecker.go
 
 
