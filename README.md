@@ -1,4 +1,4 @@
-### hashchecker - Check for file hash in Team Cymru's Malware Hash Registry.
+### hashchecker - Check for file hashes in Team Cymru's Malware Hash Registry.
 
 hashchecker.go is a go program which will generate a hash for files in a directory, recursively. It will then check for the hash on Team Cymru's Malware Hash Registry (https://www.team-cymru.com/mhr).
 
@@ -16,10 +16,9 @@ Before executing, modify the following in hashchecker
 3. /path/to/store/hashes.txt - The absolute path of text file where the hash and absolute path of the files will be stored
 
 
-git clone https://path/repo
-
+git clone https://github.com/shreshta-labs/mhr-hashchecker.git
 cd team-cymru-mhr
 go run hashchecker.go
 
 
-For any bugs, suggestions, please send an email to swapneel.patnekar@shreshtait.com
+For any bugs, suggestions, please send an email to mhr-hashchecker@shreshtait.com
